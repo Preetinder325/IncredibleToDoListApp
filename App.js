@@ -4,31 +4,31 @@
  * @format
  */
 
-import React from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    StatusBar // I have added StatusBar for clear view.
-} from 'react-native';
-import ToDoList from './ToDoList';
-import ToDoForm from './ToDoForm';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import ToDoList from './components/ToDoList';
+import ToDoForm from './components/ToDoForm';
 
-function App() {
-    return (
-       <>
-      <StatusBar barStyle="dark-content" backgroundColor="white" /> 
-        <SafeAreaView>
-            <ToDoList />
-            <ToDoForm />
-        </SafeAreaView>
-        </>
-    );
-}
+const App = () => {
+  const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
+
+  const addTask = (taskText) => {
+    setTasks([...tasks, taskText]);
+  };
+
+  return (
+    <View style={styles.container}>
+      <ToDoList tasks={tasks} />
+      <ToDoForm addTask={addTask} />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-},
-});
+    container: {
+      flex: 1,
+      paddingTop: 50,
+    },
+  });
 
 export default App;

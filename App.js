@@ -1,34 +1,20 @@
-/**
- * My To Do List App
- *
- * @format
- */
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';  
 
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import ToDoList from './components/ToDoList';
-import ToDoForm from './components/ToDoForm';
+const Stack = createStackNavigator();
 
-const App = () => {
-  const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
-
-  const addTask = (taskText) => {
-    setTasks([...tasks, taskText]);
-  };
-
+function App() {
   return (
-    <View style={styles.container}>
-      <ToDoList tasks={tasks} />
-      <ToDoForm addTask={addTask} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 50,
-    },
-  });
+}
 
 export default App;

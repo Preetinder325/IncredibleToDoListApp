@@ -14,13 +14,23 @@ const ToDoList = ({ tasks }) => {
 };
 
 const styles = StyleSheet.create({
-    task: {
-      margin: 10,
-      padding: 10,
-      borderColor: 'darkblue', 
-      borderWidth: 1,
-      borderRadius: 10, 
+  task: {
+    margin: 10,
+    padding: 10,
+    borderColor: 'darkblue',
+    borderWidth: 1,
+    borderRadius: 10, 
+    backgroundColor: 'white', 
+    shadowColor: "grey",
+    shadowOffset: {
+      width: 0,
+      height: 1,
     },
-  });
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
+  },
+});
+
   
 export default ToDoList;
